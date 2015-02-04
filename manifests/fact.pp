@@ -20,7 +20,6 @@ define facter::fact (
       owner   => $facter::facts_file_owner,
       group   => $facter::facts_file_group,
       mode    => $facter::facts_file_mode,
-      require => File['facts_d_directory'],
     }
   }
 

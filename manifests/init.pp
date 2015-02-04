@@ -104,7 +104,6 @@ class facter (
       owner   => $facts_file_owner,
       group   => $facts_file_group,
       mode    => $facts_file_mode,
-      require => File['facts_d_directory'],
     }
     $facts_defaults = {
       'file'      => $facts_file,
