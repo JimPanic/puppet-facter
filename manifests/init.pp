@@ -98,13 +98,6 @@ class facter (
   if $facts_hash != undef {
     validate_hash($facts_hash)
     validate_absolute_path("${facts_d_dir}/${facts_file}")
-    file { 'facts_file':
-      ensure  => file,
-      path    => "${facts_d_dir}/${facts_file}",
-      owner   => $facts_file_owner,
-      group   => $facts_file_group,
-      mode    => $facts_file_mode,
-    }
     $facts_defaults = {
       'file'      => $facts_file,
       'facts_dir' => $facts_d_dir,

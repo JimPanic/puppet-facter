@@ -13,14 +13,12 @@ define facter::fact (
 
   $match = "^${name}=\\S*$"
 
-  if $file != $facter::facts_file {
-    file { "facts_file_${name}":
-      ensure  => file,
-      path    => "${facts_dir}/${file}",
-      owner   => $facter::facts_file_owner,
-      group   => $facter::facts_file_group,
-      mode    => $facter::facts_file_mode,
-    }
+  file { "facts_file_${name}":
+    ensure  => file,
+    path    => "${facts_dir}/${file}",
+    owner   => $facter::facts_file_owner,
+    group   => $facter::facts_file_group,
+    mode    => $facter::facts_file_mode,
   }
 
   file_line { "fact_line_${name}":
