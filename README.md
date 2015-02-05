@@ -1,20 +1,14 @@
 # puppet-module-facter
-===
 
 [![Build Status](https://travis-ci.org/ghoneycutt/puppet-module-facter.png?branch=master)](https://travis-ci.org/ghoneycutt/puppet-module-facter)
 
 Puppet module to manage Facter
 
-===
-
 # Compatibility
----------------
+
 This module is built for use with Puppet v3 and supports Ruby v1.8.7, v1.9.3, v2.0.0 and v2.1.0.
 
-===
-
-# Parameters
-------------
+# Class facter parameters
 
 manage_package
 --------------
@@ -88,12 +82,6 @@ Hash of facts to be passed to facter::fact with create_resources().
 
 - *Default*: undef
 
-facts_file
-----------
-Filename under `facts_d_dir` to place facts in
-
-- *Default*: facts.txt
-
 facts_file_owner
 ----------------
 Owner of facts_file.
@@ -112,33 +100,7 @@ Four digit mode of facts_file.
 
 - *Default*: 0644
 
-===
-
-# Define `facter::fact`
-
-Ensures a fact is present in the fact file with stdlib file_line() in fact=value format.
-
-## Usage
-You can optionally specify a hash of external facts in Hiera.
-<pre>
----
-facter::facts:
-  role:
-    value: 'puppetmaster'
-  location:
-    value: 'RNB'
-    file: 'location.txt'
-</pre>
-
-The above configuration in Hiera would produce `/etc/facter/facts.d/facts.txt` with the following content.
-<pre>
-role=puppetmaster
-</pre>
-
-It would also produce `/etc/facter/facts.d/location.txt` with the following content.
-<pre>
-location=RNB
-</pre>
+# Defined Type facter::fact parameters
 
 value
 -----
@@ -146,20 +108,37 @@ Value for the fact
 
 - *Required*
 
-fact
-----
-Name of the fact
-
-- *Default*: $name
-
 file
 ----
 File under `facts_dir` in which to place the fact.
 
-- *Default*: 'facts.txt'
+- *Default*: ${name}.txt
 
 facts_dir
 ---------
 Path to facts.d directory.
 
 - *Default*: '/etc/facter/facts.d'
+
+# Usage
+
+You can use the defined type to set external fact files or specify a hash of external facts in Hiera, e.g.:
+<pre>
+---
+facter::facts_hash:
+  role:
+    value: 'puppetmaster'
+  location:
+    value: 'RNB'
+    file: 'fact.txt'
+</pre>
+
+The above configuration in Hiera would produce `/etc/facter/facts.d/role.txt` with the following content.
+<pre>
+role=puppetmaster
+</pre>
+
+It would also produce `/etc/facter/facts.d/fact.txt` with the following content.
+<pre>
+location=RNB
+</pre>
