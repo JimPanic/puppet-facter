@@ -96,7 +96,8 @@ class facter (
 
   # optionally push fact to client
   if $facts_hash != undef {
-    validate_hash($facts_hash)
-    create_resources('facter::fact', $facts_hash)
+    $facts_hashes = hiera_hash('facter::facts_hash')
+    validate_hash($facts_hashes)
+    create_resources('facter::fact', $facts_hashes)
   }
 }
