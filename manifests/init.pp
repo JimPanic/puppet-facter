@@ -97,11 +97,6 @@ class facter (
   # optionally push fact to client
   if $facts_hash != undef {
     validate_hash($facts_hash)
-    validate_absolute_path("${facts_d_dir}/${facts_file}")
-    $facts_defaults = {
-      'file'      => $facts_file,
-      'facts_dir' => $facts_d_dir,
-    }
-    create_resources('facter::fact',$facts_hash, $facts_defaults)
+    create_resources('facter::fact', $facts_hash)
   }
 }
