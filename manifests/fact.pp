@@ -4,9 +4,8 @@
 #
 define facter::fact (
   $value,
-  $fact      = $name,
   $file      = $name,
-  $facts_dir = '/etc/facter/facts.d',
+  $facts_dir = $facter::facts_d_dir,
 ) {
 
   include 'facter'

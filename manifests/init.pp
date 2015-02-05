@@ -15,7 +15,6 @@ class facter (
   $path_to_facter_symlink = '/usr/local/bin/facter',
   $ensure_facter_symlink  = false,
   $facts_hash             = undef,
-  $facts_file             = 'facts.txt',
   $facts_file_owner       = 'root',
   $facts_file_group       = 'root',
   $facts_file_mode        = '0644',
