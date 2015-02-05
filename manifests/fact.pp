@@ -5,7 +5,7 @@
 define facter::fact (
   $value,
   $fact      = $name,
-  $file      = 'facts.txt',
+  $file      = $name,
   $facts_dir = '/etc/facter/facts.d',
 ) {
 
