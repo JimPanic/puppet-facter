@@ -4,7 +4,7 @@
 #
 define facter::fact (
   $value,
-  $file      = $name,
+  $file      = "${name}.txt",
   $facts_dir = $facter::facts_d_dir,
 ) {
 
